@@ -88,21 +88,15 @@ class myAdvPTRNNModel2(nn.Module):
         logits = self.dense(logits)
 
         return logits
-
+'''
 class myAdvPTRNNModel3(nn.Module):
     def __init__(self):
-        '''
-        Please finish your code here.
-        '''
         super().__init__()
         self.embed_layer = nn.Embedding(10, 32)
         self.rnn = nn.LSTM(64, 64, batch_first = True)
         self.dense = nn.Linear(64, 10)
 
     def forward(self, num1, num2):
-        '''
-        Please finish your code here.
-        '''
         num1 = num1.cuda()
         num2 = num2.cuda()
 
@@ -116,7 +110,7 @@ class myAdvPTRNNModel3(nn.Module):
         logits = self.dense(logits)
 
         return logits
-
+'''
 
 def compute_loss(logits, labels):
     losses = nn.CrossEntropyLoss()
@@ -203,7 +197,7 @@ def pt_adv_main():
     evaluate_long(model)
 
 def pt_model1_main():
-    model = myAdvPTRNNModel3().cuda()
+    model = myAdvPTRNNModel2().cuda()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=0.001)
     train_long(500, model, optimizer)
     evaluate_long(model)
